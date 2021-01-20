@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import React from 'react';
+import { default as CheckoutItem } from '../../components/checkout-item/checkout-item.container';
 import {
     CheckoutHeader,
     CheckoutPageContainer,
@@ -9,11 +9,8 @@ import {
 } from './checkout.styles';
 
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
-import { CartContext } from '../../providers/cart/cart.provider';
 
-const CheckoutPage = () => {
-    const { cartItems, cartTotal } = useContext(CartContext);
-
+const CheckoutPage = ({ cartItems, cartTotal }) => {
     return (
         <CheckoutPageContainer>
             <CheckoutHeader>

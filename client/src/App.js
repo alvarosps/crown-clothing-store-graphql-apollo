@@ -11,16 +11,14 @@ import {
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
-import Header from './components/header/header.component';
+import { default as Header } from './components/header/header.container';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import CheckoutPage from './pages/checkout/checkout.component';
+import { default as CheckoutPage } from './pages/checkout/checkout.container';
 
 import {
 	auth,
 	createUserProfileDocument
 } from './firebase/firebase.utils';
-
-import CurrentUserContext from './contexts/current-user/current-user.context';
 
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -48,9 +46,7 @@ const App = () => {
 
 	return (
 		<div>
-			<CurrentUserContext.Provider value={currentUser}>
-				<Header />
-			</CurrentUserContext.Provider>
+			<Header />
 			<Switch>
 				<Route exact path='/' component={HomePage} />
 				<Route path='/shop' component={ShopPage} />

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import CartItem from '../cart-item/cart-item.component';
 import { withRouter } from 'react-router-dom';
@@ -10,11 +10,7 @@ import {
     EmptyMessageContainer
 } from './cart-dropdown.styles';
 
-import { CartContext } from '../../providers/cart/cart.provider'
-
-const CartDropdown = ({ history }) => {
-    const { cartItems, toggleHidden } = useContext(CartContext);
-
+const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
     return (
         <CartDropdownContainer>
             <CartItemsContainer>
@@ -27,7 +23,7 @@ const CartDropdown = ({ history }) => {
             </CartItemsContainer>
             <CartDropdownButton onClick={() => {
                 history.push('/checkout');
-                toggleHidden();
+                toggleCartHidden();
         }}>GO TO CHECKOUT</CartDropdownButton>
         </CartDropdownContainer>
     );
