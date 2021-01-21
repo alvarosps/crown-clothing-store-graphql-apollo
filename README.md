@@ -1,5 +1,6 @@
 # crown-clothing-store-graphql-apollo
-Complete E-Commerce app created using React, Redux, Stripe API, Firebase/Firestorm
+### Complete E-Commerce app created using React, Redux, Stripe API, Firebase/Firestorm
+#### Live version: https://sps-crown-clothing-live.herokuapp.com/ (v2.2 of the app)
 
 ## v2.2 (this app)
 ### This is following the version v1.0, and will use GraphQL and Apollo to reach for the data.
