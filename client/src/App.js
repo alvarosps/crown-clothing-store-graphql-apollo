@@ -1,6 +1,8 @@
 import React, {
 	useState,
-	useEffect
+	useEffect,
+	lazy,
+	Suspense
 } from 'react';
 import {
 	Route,
@@ -8,11 +10,7 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
 import { default as Header } from './components/header/header.container';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { default as CheckoutPage } from './pages/checkout/checkout.container';
 
 import {
 	auth,
@@ -20,6 +18,13 @@ import {
 } from './firebase/firebase.utils';
 
 import { GlobalStyle } from './global.styles';
+import Spinner from './components/spinner/spinner.component';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
+
+const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
+const ShopPage = lazy(() => import('./pages/shop/shop.component'));
+const CheckoutPage = lazy(() => import('./pages/checkout/checkout.container'));
+const SignInAndSignUpPage = lazy(() => import('./pages/sign-in-and-sign-up/sign-in-and-sign-up.component'));
 
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -50,10 +55,14 @@ const App = () => {
 			<GlobalStyle />
 			<Header />
 			<Switch>
-				<Route exact path='/' component={HomePage} />
-				<Route path='/shop' component={ShopPage} />
-				<Route exact path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)} />
-				<Route exact path='/checkout' component={CheckoutPage} />
+				<ErrorBoundary>
+					<Suspense fallback={<Spinner />}>
+						<Route exact path='/' component={HomePage} />
+						<Route path='/shop' component={ShopPage} />
+						<Route exact path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)} />
+						<Route exact path='/checkout' component={CheckoutPage} />
+					</Suspense>
+				</ErrorBoundary>
 			</Switch>
 		</div>
 	);
