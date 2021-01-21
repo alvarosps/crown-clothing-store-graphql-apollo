@@ -8,6 +8,8 @@ Complete E-Commerce app created using React, Redux, Stripe API, Firebase/Firesto
 * Mobile responsive styles added
 * Added React Lazy, Suspense to improve performance
 * Create ErrorBoundary component to show error page if anything goes wrong in the components
+* Using React.memo to improve performance
+* Added compression to express server for Heroku Deployment
 
 ## v2.1
 ### This is following the version v1.0, but it has Context API replacing all of Redux in the app.
