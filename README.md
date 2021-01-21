@@ -4,6 +4,8 @@ Complete E-Commerce app created using React, Redux, Stripe API, Firebase/Firesto
 ## v2.2 (this app)
 ### This is following the version v1.0, and will use GraphQL and Apollo to reach for the data.
 #### https://github.com/alvarosps/crown-clothing-store-graphql-apollo
+* Replacing most of Context API/Redux Sagas with GraphQL/Apollo (only left Directory Context because of not having Sections in the GraphQL Playground)
+* Mobile responsive styles added
 
 ## v2.1
 ### This is following the version v1.0, but it has Context API replacing all of Redux in the app.

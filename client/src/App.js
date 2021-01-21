@@ -2,7 +2,6 @@ import React, {
 	useState,
 	useEffect
 } from 'react';
-import './App.css';
 import {
 	Route,
 	Switch,
@@ -19,6 +18,8 @@ import {
 	auth,
 	createUserProfileDocument
 } from './firebase/firebase.utils';
+
+import { GlobalStyle } from './global.styles';
 
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -46,6 +47,7 @@ const App = () => {
 
 	return (
 		<div>
+			<GlobalStyle />
 			<Header />
 			<Switch>
 				<Route exact path='/' component={HomePage} />
